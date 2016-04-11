@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body data-ng-app="SnackApp">
+  <main data-ng-controller="SnackController as snackctrl">
+    <h1>{{snackctrl.smokeTest}}</h1> 
+    <h1>snacks: {{snackctrl.snacks}}</h1> 
+    <div data-ng-repeat="snack in snackctrl.snacks">
+      <script>console.log(snack)</script>
+      <h1>{{snack.name}}</h1>
+        <ul data-ng-repeat="ingredient in snack.ingredients">
+          <li>{{ingredient}}</li>
+        </ul>
+    </div>
+  </main>
+  <script src='./bundle.js'></script>
+</body> 

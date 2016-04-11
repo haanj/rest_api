@@ -1,5 +1,5 @@
 'use strict';
-let DB_PORT = require('./.config').DB_PORT;
+let DB_PORT = process.env.DB || require('./.config').DB;
 let mongoose = require('mongoose');
 let Movie = require('./models/movie_module');
 let Snack = require('./models/snack_module');

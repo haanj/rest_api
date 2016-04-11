@@ -1,6 +1,6 @@
 'use strict';
-let S_PORT = Number(process.env.S_PORT) || require('./.config').S_PORT;
-let DB_PORT = process.env.DB_PORT || require('./.config').DB_PORT;
+let S_PORT = Number(process.env.S_PORT) || 3000;
+let DB_PORT = process.env.DB;
 
 let bodyParser = require('body-parser');
 let express = require('express');
@@ -12,6 +12,12 @@ let Snack = require('./models/snack_module');
 
 mongoose.connect(DB_PORT);
 
+app.use((req, res, next)=> {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 app.use(bodyParser.json());
 
